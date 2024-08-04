@@ -103,6 +103,7 @@ const Auth = () => {
         {login ? <h1>Mode Login</h1> : <h1>Mode Register</h1>}
         {login ? (
           <div>
+            <div></div>
             <form onSubmit={handleSubmitLogin(onLoginSubmit)}>
               <div>
                 <label htmlFor="email">Email</label>
