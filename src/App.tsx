@@ -11,6 +11,7 @@ import Home from './pages/home-page/Home';
 import SessionProvider from './providers/SessionProvider';
 import PrivateRoute from './components/PrivateRoute';
 import AppLayout from './components/AppLayout';
+import { Theme as RadixUiTheme } from '@radix-ui/themes';
 
 const App = () => {
     const queryCache = useMemo(() => new QueryCache(), []);
@@ -28,25 +29,30 @@ const App = () => {
 
     return (
         <div>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/login" element={<Login />} />
-                    <Route
-                        path="/"
-                        element={
-                            <QueryClientProvider client={queryClient}>
-                                <SessionProvider>
-                                    <AppLayout />
-                                </SessionProvider>
-                            </QueryClientProvider>
-                        }
-                    />
-                    <Route element={<PrivateRoute />}>
-                        <Route path="/" element={<Home />} />
-                        <Route path="*" element={<Navigate replace to="/" />} />
-                    </Route>
-                </Routes>
-            </BrowserRouter>
+            <RadixUiTheme>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/login" element={<Login />} />
+                        <Route
+                            path="/"
+                            element={
+                                <QueryClientProvider client={queryClient}>
+                                    <SessionProvider>
+                                        <AppLayout />
+                                    </SessionProvider>
+                                </QueryClientProvider>
+                            }
+                        />
+                        <Route element={<PrivateRoute />}>
+                            <Route path="/" element={<Home />} />
+                            <Route
+                                path="*"
+                                element={<Navigate replace to="/" />}
+                            />
+                        </Route>
+                    </Routes>
+                </BrowserRouter>
+            </RadixUiTheme>
         </div>
     );
 };
