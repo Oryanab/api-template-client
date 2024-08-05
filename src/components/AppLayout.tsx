@@ -8,6 +8,7 @@ const AppLayout = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 height: '100vh',
+                width: '100vw',
                 overflow: 'hidden',
                 padding: '0 18px 18px 18px'
             }}
